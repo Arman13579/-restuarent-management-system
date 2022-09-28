@@ -1,0 +1,45 @@
+﻿@model IEnumerable<work_01.Models.ItemCategory>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-12 p-2">
+        <div class="card border-info">
+            <div class="card-header">
+                <h4 class="card-title">Category List</h4>
+
+                <h6 class="card-subtitle d-flex justify-content-between text-muted">Category List<a href="@Url.Action("Create","Category")" class="btn btn-primary btn-sm" title="Create new category"><i class="fa fa-plus"></i></a></h6>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-light">
+                        <tr>
+                            <th>@Html.DisplayNameFor(x => x.ItemCategoryId)</th>
+                            <th>@Html.DisplayNameFor(x => x.CategoryName)</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var cat in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(x => cat.ItemCategoryId)</td>
+                                <td>@Html.DisplayFor(x => cat.CategoryName)</td>
+                                <td>
+                                    <a title="edit this item" href="@Url.Action("Edit","Home",new { id=cat.ItemCategoryId})" class="btn btn-success btn-sm "><i class="fa fa-edit"></i></a>
+                                    <a title="edit this item" href="@Url.Action("Delete","Home",new { id=cat.ItemCategoryId})" class="btn btn-danger btn-sm "><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                @Model.Count() Categories
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<work_01.Models.Order>
+
+@{ 
+ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+        <h2>Order List</h2>
+        <div class="d-flex justify-content-end">
+            <a href="@Url.Action("Index","Home")" class="btn btn-primary btn-sm mb-2"><i class="bi bi-plus"></i> Add New</a>
+        </div>
+        <table class="table table-bordered table-striped table-sm table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.OrderId)</th>
+                    <th>@Html.DisplayNameFor(x => x.OrderDate)</th>
+                    <th>@Html.DisplayNameFor(x => x.CustomerId)</th>                   
+                    <th>@Html.DisplayNameFor(x => x.OrderNumber)</th>
+                    <th>@Html.DisplayNameFor(x => x.FinalTotal)</th>
+                    
+                    <th>...</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var t in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => t.OrderId)</td>
+                        <td>@Html.DisplayFor(x => t.OrderDate)</td>
+                        <td>@Html.DisplayFor(x => t.CustomerId)</td>                       
+                        <td>@Html.DisplayFor(x => t.OrderNumber)</td>
+                        <td>@Html.DisplayFor(x => t.FinalTotal)</td>
+                        
+
+
+                        <td>
+                            <a href="@Url.Action("Edit","Item",new { id=t.OrderId})" class="btn btn-success btn-sm"><i class="bi bi-pencil"></i> Edit</a>
+                            <a href="@Url.Action("Delete","Item",new { id=t.OrderId})" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

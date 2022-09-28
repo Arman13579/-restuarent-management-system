@@ -1,0 +1,89 @@
+﻿@model work_01.Models.Item
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="p-0 m-0">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="alert alert-danger">Delete Item No: @Model.ItemId</h2>
+        </div>
+    </div>
+    <div class="row mb-1">
+        @Html.LabelFor(x => x.ItemName, new { @class = "col-form-label col-form-label-sm col-2 r" })
+        <div class="col-6">
+            @Html.DisplayFor(x => x.ItemName, new { @class = "form-control form-control-sm" })
+        </div>
+    </div>
+    <div class="row mb-1">
+        @Html.LabelFor(x => x.ItemPrice, new { @class = "col-form-label col-form-label-sm col-2 r" })
+        <div class="col-6">
+            @Html.DisplayFor(x => x.ItemPrice, new { @class = "form-control form-control-sm" })
+        </div>
+    </div>
+    <div class="row mb-1">
+        @Html.LabelFor(x => x.Quantity, new { @class = "col-form-label col-form-label-sm col-2 r" })
+        <div class="col-6">
+            @Html.DisplayFor(x => x.Quantity, new { @class = "form-control form-control-sm" })
+        </div>
+    </div>
+    <div class="row mb-1">
+        @Html.LabelFor(x => x.Category, new { @class = "col-form-label col-form-label-sm col-2 r" })
+        <div class="col-6">
+            @Html.DisplayFor(x => x.Category, new { @class = "form-control form-control-sm" })
+        </div>
+    </div>
+    <div class="row mb-1">
+        @Html.LabelFor(x => x.PurchaseDate, new { @class = "col-form-label col-form-label-sm col-2 r" })
+        <div class="col-6">
+            @Html.DisplayFor(x => x.PurchaseDate, new { @class = "form-control form-control-sm" })
+        </div>
+    </div>
+    <div class="row mb-1">
+        @Html.LabelFor(x => x.IsAvailable, new { @class = "col-form-label col-form-label-sm col-2 r" })
+        <div class="col-6">
+            @Html.DisplayFor(x => x.IsAvailable, new { @class = "form-control form-control-sm" })
+        </div>
+    </div>
+    <div class="row mb-1">
+        @Html.LabelFor(x => x.ItemPicture, new { @class = "col-form-label col-form-label-sm col-2 r" })
+        <div class="col-6">
+            <img src="@Url.Content(Model.ItemPicture)" width="50" />
+        </div>
+    </div>
+
+    @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "msg", }))
+    {
+
+        @Html.AntiForgeryToken()
+        <div class="row mb-1">
+            <div class="col-10 offset-2">
+                <button id="btnDelete" type="submit" class="btn btn-danger">Confirm Delete</button>
+            </div>
+        </div>
+        <div class="row mb-1">
+            <div id="msg">
+            </div>
+        </div>
+
+    }
+    <div class="row">
+        <div class="col-12">
+            <a href="@Url.Action("Index","Item")" class="card-link"><i class="bi bi-arrow-left"></i> Back to list</a>
+        </div>
+    </div>
+
+</div>
+
+@section scripts{
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+    <script>
+        $("#form0").attr("enctype","multipart/form-data")       
+
+    </script>
+
+}

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<work_01.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12 p-2">
+        <div class="card border-info">
+            <div class="card-header">
+                <h4 class="card-title">Customer List</h4>
+
+                <h6 class="card-subtitle d-flex justify-content-between text-muted">Category List<a href="@Url.Action("Create","Customer")" class="btn btn-primary btn-sm" title="Create new category"><i class="fa fa-plus"></i></a></h6>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-light">
+                        <tr>
+                            <th>@Html.DisplayNameFor(x => x.CustomerId)</th>
+                            <th>@Html.DisplayNameFor(x => x.CustomerName)</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var cat in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(x => cat.CustomerId)</td>
+                                <td>@Html.DisplayFor(x => cat.CustomerName)</td>
+                                <td>
+                                    <a title="edit this item" href="@Url.Action("Edit","Customer",new { id=cat.CustomerId})" class="btn btn-success btn-sm "><i class="fa fa-edit"></i></a>
+                                    <a title="edit this item" href="@Url.Action("Delete","Customer",new { id=cat.CustomerId})" class="btn btn-danger btn-sm "><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                @Model.Count() Customer
+            </div>
+        </div>
+    </div>
+</div>
+

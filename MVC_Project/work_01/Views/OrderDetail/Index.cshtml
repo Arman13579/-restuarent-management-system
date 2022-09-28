@@ -1,0 +1,38 @@
+﻿@model  IEnumerable<work_01.Models.OrderDetail>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+        <h2>OrderDetails List</h2>
+        
+        <table class="table table-bordered table-striped table-sm table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.OrderDetailId)</th>
+                    <th>@Html.DisplayNameFor(x => x.UnitPrice)</th>                  
+                    <th>@Html.DisplayNameFor(x => x.Discount)</th>
+                    <th>@Html.DisplayNameFor(x => x.Total)</th>
+                    <th>@Html.DisplayNameFor(x => x.ItemId)</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var t in Model)
+                {
+                <tr>
+                    <td>@Html.DisplayFor(x => t.OrderDetailId)</td>
+                    <td>@Html.DisplayFor(x => t.UnitPrice)</td>                    
+                    <td>@Html.DisplayFor(x => t.Discount)</td>
+                    <td>@Html.DisplayFor(x => t.Total)</td>
+                    <td>@Html.DisplayFor(x => t.ItemId)</td>
+                   
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

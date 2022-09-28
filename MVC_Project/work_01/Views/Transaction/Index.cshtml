@@ -1,0 +1,36 @@
+﻿@model IEnumerable<work_01.Models.Transaction>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+        <h2>Transaction table List</h2>
+
+        <table class="table table-bordered table-striped table-sm table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.TransactionId)</th>
+                    <th>@Html.DisplayNameFor(x => x.TypeId)</th>
+                    <th>@Html.DisplayNameFor(x => x.TransactionDate)</th>                                   
+                    <th>@Html.DisplayNameFor(x => x.ItemId)</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var t in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => t.TransactionId)</td>
+                        <td>@Html.DisplayFor(x => t.TypeId)</td>
+                        <td>@Html.DisplayFor(x => t.TransactionDate)</td>                                 
+                        <td>@Html.DisplayFor(x => t.ItemId)</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
